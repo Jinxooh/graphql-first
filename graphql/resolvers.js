@@ -1,31 +1,14 @@
-const People = [
-  {
-    id: 0,
-    name: 'jeckson',
-    age: 31,
-    gender: 'male',
-  },
-  {
-    id: 1,
-    name: 'jeckson1',
-    age: 11,
-    gender: 'male2',
-  },
-  {
-    id: 2,
-    name: 'jeckson2',
-    age: 21,
-    gender: 'male3',
-  },
-]
-
-const getById = id => People.filter(person => person.id === id)[0];
+import { getMovies, getMovieById, addMovie, deleteMovie } from './db';
 
 const resolvers = {
   Query: {
-    people: () => People,
-    person: (_, { id }) => getById(id),
-  }
-}
+    getMovies: () => getMovies(),
+    getMovieById: (_, { id }) => getMovieById(id),
+  },
+  Mutation: {
+    addMovie: (_, { name, score}) => addMovie(name, score),
+    deleteMovie: (_, { id }) => deleteMovie(id),
+  },
+};
 
 export default resolvers;
