@@ -1,14 +1,27 @@
-type Movie {
+type MovieList {
   id: Int!
   title: String!
   rating: Float!
   summary: String!
   language: String!
+  genres: [String]!
   medium_cover_image: String!
 }
 
+type MovieDetail {
+  id: Int!
+  title: String!
+  rating: Float!
+  description_full: String!
+  medium_cover_image: String!
+  genres: [String]!
+  download_count: Int!
+  runtime: Int!
+  language: String!
+}
+
 type Query {
-  getMovies(limit: Int!, rating: Float!): [Movie]!
-  getMovie(id: Int!): Movie!
-  getSuggestions(id: Int!): [Movie]!
+  getMovies(limit: Int!, rating: Float!): [MovieList]!
+  getMovie(id: Int!): MovieDetail!
+  getSuggestions(id: Int!): [MovieList]!
 }
